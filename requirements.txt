@@ -1,0 +1,7 @@
+Flask
+requests==2.24.0
+line-bot-sdk
+google-cloud-secret-manager
+firebase-admin
+APScheduler
+ptvsd==4.3.2 # Required for debugging.
