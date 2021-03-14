@@ -81,18 +81,23 @@ def getDetailedBus(busNo, data):
     data = response.json()
     result[item] = []
     for item1 in data:
-      if item1["StopStatus"] != 3 and "EstimateTime" in item1.keys():
-        temp["0"]["PlateNumb"] = item1["PlateNumb"]
-        temp["0"]["EstimateTime"] = item1["EstimateTime"]
-        result[item].append(temp.copy())
-      elif item1["StopStatus"] == 3:
-        temp["0"]["PlateNumb"] = ""
-        temp["0"]["EstimateTime"] = None
-        temp["0"]["Message"] = "末班車駛離"
-      elif item1["StopStatus"] == 2:
-        temp["0"]["PlateNumb"] = ""
-        temp["0"]["EstimateTime"] = None
-        temp["0"]["Message"] = "交管不停"
+      if "StopStatus" in item1:
+        if item1["StopStatus"] != 3 and "EstimateTime" in item1.keys():
+          temp["0"]["PlateNumb"] = item1["PlateNumb"]
+          temp["0"]["EstimateTime"] = item1["EstimateTime"]
+          result[item].append(temp.copy())
+        elif item1["StopStatus"] == 3:
+          temp["0"]["PlateNumb"] = ""
+          temp["0"]["EstimateTime"] = None
+          temp["0"]["Message"] = "末班車駛離"
+        elif item1["StopStatus"] == 2:
+          temp["0"]["PlateNumb"] = ""
+          temp["0"]["EstimateTime"] = None
+          temp["0"]["Message"] = "交管不停"
+        else:
+          temp["0"]["PlateNumb"] = ""
+          temp["0"]["EstimateTime"] = None
+          temp["0"]["Message"] = "無法取得該站點資訊"
 
   for item in tempData:
     request_url = "https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taichung/{0}".format(
@@ -106,18 +111,23 @@ def getDetailedBus(busNo, data):
     data = response.json()
     result[item] = []
     for item1 in data:
-      if item1["StopStatus"] != 3 and "EstimateTime" in item1.keys():
-        temp["1"]["PlateNumb"] = item1["PlateNumb"]
-        temp["1"]["EstimateTime"] = item1["EstimateTime"]
-        result[item].append(temp.copy())
-      elif item1["StopStatus"] == 3:
-        temp["1"]["PlateNumb"] = ""
-        temp["1"]["EstimateTime"] = None
-        temp["1"]["Message"] = "末班車駛離"
-      elif item1["StopStatus"] == 2:
-        temp["1"]["PlateNumb"] = ""
-        temp["1"]["EstimateTime"] = None
-        temp["1"]["Message"] = "交管不停"
+      if "StopStatus" in item1:
+        if item1["StopStatus"] != 3 and "EstimateTime" in item1.keys():
+          temp["0"]["PlateNumb"] = item1["PlateNumb"]
+          temp["0"]["EstimateTime"] = item1["EstimateTime"]
+          result[item].append(temp.copy())
+        elif item1["StopStatus"] == 3:
+          temp["0"]["PlateNumb"] = ""
+          temp["0"]["EstimateTime"] = None
+          temp["0"]["Message"] = "末班車駛離"
+        elif item1["StopStatus"] == 2:
+          temp["0"]["PlateNumb"] = ""
+          temp["0"]["EstimateTime"] = None
+          temp["0"]["Message"] = "交管不停"
+        else:
+          temp["0"]["PlateNumb"] = ""
+          temp["0"]["EstimateTime"] = None
+          temp["0"]["Message"] = "無法取得該站點資訊"
 
   return result
 
