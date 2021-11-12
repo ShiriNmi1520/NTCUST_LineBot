@@ -29,10 +29,10 @@ log = create_logger(app)
 
 # Channel Access Token
 line_bot_api = LineBotApi(
-    'lDq9TtQgojc3zHAG2UhC2USrfnHRGql8DtA8wKftENtr2iQuWJrjUCJkr4Yq1PA1DCH7it7cGyEFtst1wSZWzcUWPJ8r33xiFtyJDcpbmZevsSrHmHAXravu48Y0Q4LPuAMhMiQH8DjM4PF1bVzchAdB04t89/1O/w1cDnyilFU=')
+    '')
 
 # Channel Secret
-handler = WebhookHandler('01b2e630b6634fe1b960e759eb12f41a')
+handler = WebhookHandler('')
 
 
 def checkAndSendSchedule():
