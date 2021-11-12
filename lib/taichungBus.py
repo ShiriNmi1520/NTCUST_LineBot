@@ -54,7 +54,7 @@ def getNearbyStation(data):
 
 
 def getDetailedBus(busNo, data):
-  a = Auth("9233f9eb59ec47e69df2a0a03497cfea", "5VKrKEcC2fbWGONdbfc6Jakfq20")
+  a = Auth("", "")
   result = dict()
   tempData = []
   location = str(data["latitude"]) + ',' + str(data["longitude"])
@@ -177,7 +177,7 @@ def getBusRoute(skip, count):
   params = dict(top=count if count else 30,
                 skip=skip if skip else 0,
                 format="JSON",)
-  a = Auth("9233f9eb59ec47e69df2a0a03497cfea", "5VKrKEcC2fbWGONdbfc6Jakfq20")
+  a = Auth("", "")
   response = request('get', 'https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/Taichung',
                      headers=a.get_auth_header(), params=params)
   data = response.json()
@@ -190,8 +190,3 @@ def getBusRoute(skip, count):
       # route.append(stop["StopName"]["Zh_tw"])
       addBusStops(stop["StopName"]["Zh_tw"], item["Direction"], {
                   "busNo": item["SubRouteName"]["Zh_tw"]})
-
-
-if(__name__ == "__main__"):
-  print(getDetailedBus(75,
-                       {"latitude": 24.153375, "longitude": 120.713918}))
