@@ -10,7 +10,7 @@ from datetime import datetime
 credentials = service_account.Credentials.from_service_account_file(
     path.relpath("pk/secret_manager.json"))
 client = secretmanager.SecretManagerServiceClient(credentials=credentials)
-name = f"projects/409751210552/secrets/BUYAO-JIWO-KEYIMA_PK/versions/1"
+name = f""
 
 response = client.access_secret_version(request={"name": name})
 
@@ -25,7 +25,7 @@ with open(path.relpath("pk/firebase_pk.json"), "w") as file:
 fb_cred = firebase_admin.credentials.Certificate(
     path.relpath("pk/firebase_pk.json"))
 fb_app = firebase_admin.initialize_app(
-    fb_cred, {"databaseURL": "https://buyao-70f4a.firebaseio.com"})
+    fb_cred, {"databaseURL": ""})
 
 # remove temp firebase pk file
 try:
